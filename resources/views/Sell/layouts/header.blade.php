@@ -7,7 +7,14 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="">Giỏ hàng</a></a>
+                @php
+                    $carts = session('carts');
+                    if($carts != null)
+                        $quality = count($carts);
+                    else
+                        $quality = 0;
+                @endphp
+                <a class="nav-link" href="{{ route('cart.index') }}">Giỏ hàng <b>{{ $quality }}</b></a></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="">Thanh toán</a></a>

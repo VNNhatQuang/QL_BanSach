@@ -31,16 +31,22 @@
             <td colspan="3">
                 <br>
                 <h1>Trang chủ</h1>
-                <hr>
+                <br>
             </td>
         </tr>
+
         <tr>
             <td width="250" valign="top">
                 <table class="table table-hover">
+                    <tr>
+                        <td>
+                            <a href="{{ route('home.index') }}">Tất cả</a>
+                        </td>
+                    </tr>
                     @foreach ($categories as $category)
                         <tr>
                             <td>
-                                <a href="htsachController?ml=<%=loai.getMaloai()%>">{{ $category->tenloai }}</a>
+                                <a href="{{ route('home.index', $category->maloai) }}">{{ $category->tenloai }}</a>
                             </td>
                         </tr>
                     @endforeach
@@ -56,7 +62,7 @@
                                 {{ $books[$i]->tensach }}<br>
                                 {{ $books[$i]->gia }}<br>
                                 <a class="btn btn-success"
-                                    href="giohangController?anh=<%=s.getAnh()%>&ms=<%=s.getMasach()%>&ts=<%=s.getTensach()%>&gia=<%=s.getGia()%>">Thêm
+                                    href="{{ route('home.addToCart') }}?anh={{ $books[$i]->anh }}&masach={{ $books[$i]->masach }}&tensach={{ $books[$i]->tensach }}&gia={{ $books[$i]->gia }}">Thêm
                                     vào giỏ</a>
                             </td>
                             @php
@@ -68,7 +74,7 @@
                                     {{ $books[$i]->tensach }}<br>
                                     {{ $books[$i]->gia }}<br>
                                     <a class="btn btn-success"
-                                        href="giohangController?anh=<%=s.getAnh()%>&ms=<%=s.getMasach()%>&ts=<%=s.getTensach()%>&gia=<%=s.getGia()%>">Thêm
+                                        href="{{ route('home.addToCart') }}?anh={{ $books[$i]->anh }}&masach={{ $books[$i]->masach }}&tensach={{ $books[$i]->tensach }}&gia={{ $books[$i]->gia }}">Thêm
                                         vào giỏ</a>
                                 </td>
                             @endif
@@ -77,18 +83,17 @@
                 </table>
             </td>
 
-
-
             <td width="400" valign="top" class="form-control">
                 <form action="" method="get">
-                    <input class="form-control" name="searchValue" type="text" value="" placeholder="Tìm kiếm sách"><br>
+                    <input class="form-control" name="searchValue" type="text" value=""
+                        placeholder="Tìm kiếm sách" autofocus><br>
                     <input type="submit" value="Tìm kiếm" class="btn btn-primary form-control">
                 </form>
             </td>
 
-
         </tr>
     </table>
+
 </body>
 
 </html>

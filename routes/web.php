@@ -25,6 +25,10 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+Route::get('/home/{idLoai?}', [HomeController::class, 'index'])->name('home.index');
+Route::get('/addToCart', [HomeController::class, 'addToCart'])->name('home.addToCart');
+Route::get('/cart', [HomeController::class, 'showCart'])->name('cart.index');
+Route::get('/handelCart', [HomeController::class, 'handelCart'])->name('cart.handle');
 
 
 
