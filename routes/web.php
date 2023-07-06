@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Sell\AuthController;
 use App\Http\Controllers\Sell\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,13 @@ Route::get('/home/{idLoai?}', [HomeController::class, 'index'])->name('home.inde
 Route::get('/addToCart', [HomeController::class, 'addToCart'])->name('home.addToCart');
 Route::get('/cart', [HomeController::class, 'showCart'])->name('cart.index');
 Route::get('/handelCart', [HomeController::class, 'handelCart'])->name('cart.handle');
-
+Route::get('/pay', [HomeController::class, 'pay'])->name('pay.index');
+Route::post('/pay', [HomeController::class, 'payStore'])->name('pay.store');
+Route::get('/history', [HomeController::class, 'history'])->name('history.index');
 
 
 
 
 // ADMIN
+Route::get('/admin', [AdminAuthController::class, 'showLogin'])->name('admin.auth.showLogin');
+

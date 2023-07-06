@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Đăng nhập - Cửa hàng sách online</title>
+    <title>Admin - Cửa hàng sách online</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -21,7 +21,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{{ route('home.index') }}">Trang chủ</a>
+        <a class="navbar-brand" href="">Trang chủ</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -34,10 +34,7 @@
             </ul>
             <ul class="navbar-nav navbar-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('auth.showLogin') }}">Đăng nhập</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('auth.showRegister') }}">Đăng ký</a>
+                    <a class="nav-link" href="">Đăng nhập</a>
                 </li>
             </ul>
         </div>
@@ -48,12 +45,12 @@
     <table height="600" width="800" align="center">
         <tr>
             <td>
-                <h1>BÁN SÁCH ONLINE</h1>
+                <h1>ADMIN - BÁN SÁCH ONLINE</h1>
             </td>
         </tr>
         <tr>
             <td valign="top">
-                <form action="{{ route('auth.login') }}" method="post">
+                <form action="" method="post">
                     @csrf
                     <div class="col-6">
                         <div class="form-group row">
@@ -76,7 +73,7 @@
                         <input type="submit" value="Đăng nhập" class="btn btn-primary">
                     </div>
                 </form>
-                <a href="{{ route('admin.auth.showLogin') }}">Trang Admin</a>
+                <a href="{{ route('auth.login') }}">Trang người dùng</a>
             </td>
         </tr>
 

@@ -29,6 +29,11 @@ class Customer extends Model implements Authenticatable
     ];
 
 
+    public function hoadon() {
+        return $this->hasMany(Bill::class);
+    }
+
+
 
     public function getAuthIdentifierName()
     {

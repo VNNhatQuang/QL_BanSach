@@ -37,6 +37,7 @@ class AuthController extends Controller
         $account = $request->validated();
         if (Auth::attempt($account)) {
             session()->regenerate();
+            $account = Customer::where('tendn', $account['tendn'])->first();
             session()->put('account', $account);
             return redirect()->route('home.index');
         } else

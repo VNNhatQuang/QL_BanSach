@@ -24,4 +24,6 @@ class Book extends Model
     ];
 
     public $timestamps = false;
+
+
 }

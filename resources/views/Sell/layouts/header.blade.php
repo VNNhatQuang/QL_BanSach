@@ -9,23 +9,26 @@
             <li class="nav-item">
                 @php
                     $carts = session('carts');
-                    if($carts != null)
+                    if ($carts != null) {
                         $quality = count($carts);
-                    else
+                    } else {
                         $quality = 0;
+                    }
                 @endphp
                 <a class="nav-link" href="{{ route('cart.index') }}">Giỏ hàng <b>{{ $quality }}</b></a></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Thanh toán</a></a>
+                <a class="nav-link" href="{{ route('pay.index') }}">Thanh toán</a></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Lịch sử mua hàng</a></a>
+                <a class="nav-link" href="{{ route('history.index') }}">Lịch sử mua hàng</a></a>
             </li>
         </ul>
         <ul class="navbar-nav navbar-right">
             <li class="nav-item">
-                {{-- <a class="nav-link" href="{{ route('auth.logout') }}">Đăng xuất</a> --}}
+                <a class="nav-link">Xin chào {{ session('account')->hoten }}!</a>
+            </li>
+            <li class="nav-item">
                 <form action="{{ route('auth.logout') }}" method="post">
                     @csrf
                     <input type="submit" value="Đăng xuất" class="nav-link bg-dark border-0">
