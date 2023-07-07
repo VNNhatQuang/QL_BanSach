@@ -2,83 +2,77 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin - Cửa hàng sách online</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content>
+    <meta name="author" content>
+    <title>Admin - Bán sách online</title>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Trang chủ</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
-            aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"></a><span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
-            <ul class="navbar-nav navbar-right">
-                <li class="nav-item">
-                    <a class="nav-link" href="">Đăng nhập</a>
-                </li>
-            </ul>
+<body class="bg-gradient-primary">
+
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Admin - Bán sách Online</h1>
+                                    </div>
+                                    <form action="{{ route('admin.auth.login') }}" class="user" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                aria-describedby="emailHelp" placeholder="Nhập tên đăng nhập"
+                                                name="tendn">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                placeholder="Nhập mật khẩu" name="password">
+                                        </div>
+                                        @error('error')
+                                            <span style="color: red">{{ $message }}</span>
+                                        @enderror
+                                        <hr>
+                                        <button type="submit" href="/admin/home"
+                                            class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </button>
+                                        <br>
+                                        <a href="{{ route('auth.showLogin') }}">Quay lại trang người dùng</a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
 
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <table height="600" width="800" align="center">
-        <tr>
-            <td>
-                <h1>ADMIN - BÁN SÁCH ONLINE</h1>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top">
-                <form action="" method="post">
-                    @csrf
-                    <div class="col-6">
-                        <div class="form-group row">
-                            <label for="tendn">Tên đăng nhập</label>
-                            <input name="tendn" type="text" class="form-control" value="{{ old('tendn') }}">
-                        </div>
-                        <div class="form-group row">
-                            <label for="password">Mật khẩu</label>
-                            <input name="password" type="password" class="form-control">
-                        </div>
-                        @if(session('status'))
-                            <span style="color: green">{{ session('status') }}</span>
-                        @endif
-                        @error('error')
-                            <span style="color: red">{{ $message }}</span>
-                        @enderror
-                        <hr>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Đăng nhập" class="btn btn-primary">
-                    </div>
-                </form>
-                <a href="{{ route('auth.login') }}">Trang người dùng</a>
-            </td>
-        </tr>
-
-    </table>
-
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 

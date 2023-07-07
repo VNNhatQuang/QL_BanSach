@@ -31,12 +31,23 @@ Route::get('/addToCart', [HomeController::class, 'addToCart'])->name('home.addTo
 Route::get('/cart', [HomeController::class, 'showCart'])->name('cart.index');
 Route::get('/handelCart', [HomeController::class, 'handelCart'])->name('cart.handle');
 Route::get('/pay', [HomeController::class, 'pay'])->name('pay.index');
-Route::post('/pay', [HomeController::class, 'payStore'])->name('pay.store');
-Route::get('/history', [HomeController::class, 'history'])->name('history.index');
+Route::post('/pay', [HomeController::class, 'payStore'])->name('pay.store')->middleware('auth');
+Route::get('/history', [HomeController::class, 'history'])->name('history.index')->middleware('auth');
 
 
 
 
 // ADMIN
-Route::get('/admin', [AdminAuthController::class, 'showLogin'])->name('admin.auth.showLogin');
+Route::prefix('/admin')->group(function () {
 
+    Route::get('/', [AdminAuthController::class, 'showLogin'])->name('admin.auth.showLogin');
+    Route::post('/', [AdminAuthController::class, 'login'])->name('admin.auth.login');
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.auth.logout');
+
+    Route::get('/home', function () {
+        return view('Admin.home.index');
+    })->name('admin.home.index')->middleware('authAdmin');
+
+
+
+});

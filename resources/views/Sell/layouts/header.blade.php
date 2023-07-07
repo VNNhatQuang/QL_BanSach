@@ -17,23 +17,37 @@
                 @endphp
                 <a class="nav-link" href="{{ route('cart.index') }}">Giỏ hàng <b>{{ $quality }}</b></a></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('pay.index') }}">Thanh toán</a></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('history.index') }}">Lịch sử mua hàng</a></a>
-            </li>
+            @php
+                $account = session('account');
+            @endphp
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('pay.index') }}">Thanh toán</a></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('history.index') }}">Lịch sử mua hàng</a></a>
+                </li>
+            @endauth
         </ul>
         <ul class="navbar-nav navbar-right">
-            <li class="nav-item">
-                <a class="nav-link">Xin chào {{ session('account')->hoten }}!</a>
-            </li>
-            <li class="nav-item">
-                <form action="{{ route('auth.logout') }}" method="post">
-                    @csrf
-                    <input type="submit" value="Đăng xuất" class="nav-link bg-dark border-0">
-                </form>
-            </li>
+            @if ($account != null)
+                <li class="nav-item">
+                    <a class="nav-link">Xin chào {{ $account->hoten }}!</a>
+                </li>
+                <li class="nav-item">
+                    <form action="{{ route('auth.logout') }}" method="post">
+                        @csrf
+                        <input type="submit" value="Đăng xuất" class="nav-link bg-dark border-0">
+                    </form>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('auth.showLogin') }}">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('auth.showRegister') }}">Đăng ký</a>
+                </li>
+            @endif
         </ul>
     </div>
 </nav>
