@@ -56,7 +56,7 @@
                                     <td>{{ $book->tensach }}</td>
                                     <td>{{ $book->soluong }}</td>
                                     <td>@convert($book->gia)VND</td>
-                                    <td>{{ $book->maloai }}</td>
+                                    <td>{{ $book->tenloai }}</td>
                                     <td>{{ $book->sotap }}</td>
                                     <td>{{ $book->ngaynhap }}</td>
                                     <td>{{ $book->tacgia }}</td>

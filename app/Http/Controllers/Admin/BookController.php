@@ -10,6 +10,7 @@ use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -25,9 +26,10 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $searchValue = $request->input('searchValue') ?? '';
-        $list = Book::where('tensach', 'LIKE', '%'.$searchValue.'%')
+        $list = Book::join('loai', 'sach.maloai', 'loai.maloai')
+                    ->where('tensach', 'LIKE', '%'.$searchValue.'%')
                     ->orWhere('masach', 'LIKE', '%'.$searchValue.'%')
-                    ->orWhere('maloai', 'LIKE', '%'.$searchValue.'%')
+                    ->orWhere('tenloai', 'LIKE', '%'.$searchValue.'%')
                     ->orWhere('tacgia', 'LIKE', '%'.$searchValue.'%')
                     ->paginate(BookController::PAGE_SIZE);
         return view('Admin.book.index', compact('list', 'searchValue'));
@@ -106,6 +108,10 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
+        // Xoá ảnh trong thư mục
+        $filePath = Book::where('masach', $id)->select('anh')->first();
+        Storage::delete('public/' . $filePath);
+        // Xóa trong csdl
         Book::destroy($id);
         return redirect()->route('book.index');
     }
