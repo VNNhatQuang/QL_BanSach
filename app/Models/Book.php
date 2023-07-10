@@ -23,7 +23,17 @@ class Book extends Model
         'tacgia',
     ];
 
+    protected $primaryKey = 'masach';
+
+    protected $keyType = 'string';
+
     public $timestamps = false;
+
+
+
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
 
 
 }

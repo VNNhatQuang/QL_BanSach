@@ -21,4 +21,10 @@ class Category extends Model
     public $primaryKey = 'maloai';
     public $keyType = 'string';
 
+
+
+    public function books() {
+        return $this->hasMany(Book::class);
+    }
+
 }

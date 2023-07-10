@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\BookController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Sell\AuthController;
 use App\Http\Controllers\Sell\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -48,6 +50,8 @@ Route::prefix('/admin')->group(function () {
         return view('Admin.home.index');
     })->name('admin.home.index')->middleware('authAdmin');
 
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/book', BookController::class);
 
 
 });

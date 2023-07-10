@@ -35,7 +35,7 @@
                     @for ($i = 0; $i < count($books); $i++)
                         <tr>
                             <td>
-                                <img src="{{ asset('storage/' . $books[$i]->anh) }}"><br>
+                                <img width="220" src="{{ asset('storage/' . $books[$i]->anh) }}"><br>
                                 {{ $books[$i]->tensach }}<br>
                                 {{ $books[$i]->gia }}<br>
                                 <a class="btn btn-success"

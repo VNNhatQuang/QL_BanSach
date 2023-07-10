@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class StoreCategoryRequest extends FormRequest
+class StoreBookRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,15 @@ class StoreCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'maloai' => 'required|unique:loai|regex:/\S/',
-            'tenloai' => 'required|regex:/\S/',
+            'masach' => 'required|string|unique:sach',
+            'tensach' => 'required|regex:/\S/',
+            'soluong' => 'required|integer|regex:/\S/',
+            'gia' => 'required|integer',
+            'maloai' => 'required',
+            'sotap' => 'required|integer|regex:/\S/',
+            'anh' => 'required|image',
+            'ngaynhap' => 'required|date',
+            'tacgia' => 'required|string|regex:/\S/',
         ];
     }
 }

@@ -7,6 +7,7 @@
         <div class="sidebar-brand-text mx-3">Cửa hàng sách Online</div>
     </a>
 
+    <hr class="sidebar-divider my-0">
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="/admin/home">
@@ -22,14 +23,14 @@
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('category.index') }}">
             <i class="fas fa-fw fa-bookmark"></i>
             <span>Quản lý loại sách</span></a>
     </li>
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('book.index') }}">
             <i class="fas fa-fw fa-book"></i>
             <span>Quản lý sách</span></a>
     </li>

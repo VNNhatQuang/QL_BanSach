@@ -18,7 +18,10 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h2 class="h2 mb-0 text-gray-600">Võ Ngọc Nhật Quang</h2>
+            @php
+                $account = session('account');
+            @endphp
+            <h2 class="h2 mb-0 text-gray-600">{{ $account->tendn }}</h2>
         </div>
     </div>
 @endsection
