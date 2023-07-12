@@ -64,3 +64,38 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## 🚀 Quick start
+1.  **Step 1:** Clone the project
+    ```
+    # clone the project to your local computer
+    git clone https://github.com/VNNhatQuang/QL_BanSach.git
+    ```
+1.  **Step 2:** Install Composer
+    ```
+    # Change directory to project folder
+    cd QL_BanSach
+    ```
+    ```
+    # Install Composer
+    composer install
+    ```
+1. **Step 3:** Create ``.env`` file
+    ```
+    # Copy '.env.example' file to '.env' file
+    cp .env.example .env
+    ```
+1. **Step 4:** Generate ``APP_KEY``
+    ```
+    php artisan key:generate
+    ```
+1. **Step 5:** Run migrations
+    ```
+    php artisan migrate
+    ```
+1. **Step 6:** Press "y" and Enter to create Schema "todo"
+1. **Step 7:** Run project
+    ```
+    php artisan serve
+    ```
