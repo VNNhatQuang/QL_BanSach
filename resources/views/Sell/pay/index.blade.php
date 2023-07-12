@@ -52,9 +52,25 @@
                     <br>
                     <br>
 
-                    <form action="{{ route('pay.store') }}" method="post">
+                    <form action="{{ route('pay.store') }}" method="post" class="form-control">
                         @csrf
-                        <button type="submit" class="btn btn-primary float-right">Xác nhận thanh toán</button>
+                        <div class="form-group">
+                            <label class="col">Nhập số điện thoại</label>
+                            <input type="text" name="sodienthoai" class="form-control col">
+                        </div>
+                        @error('sodienthoai')
+                            <span style="color: red">{{ $message }}</span>
+                        @enderror
+                        <div class="form-group">
+                            <label class="col">Nhập địa chỉ giao hàng</label>
+                            <input type="text" name="diachi" class="form-control col">
+                        </div>
+                        @error('diachi')
+                            <span style="color: red">{{ $message }}</span>
+                        @enderror
+                        <div class="form-group" align="end">
+                            <button type="submit" class="btn btn-primary">Xác nhận thanh toán</button>
+                        </div>
                     </form>
                 @else
                     <b>Giỏ hàng trống! Xin mời <a href="{{ route('home.index') }}">Mua hàng</a></b>

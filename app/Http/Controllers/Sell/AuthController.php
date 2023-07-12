@@ -22,7 +22,10 @@ class AuthController extends Controller
      */
     public function showLogin()
     {
-        return view('Sell.auth.login');
+        if(Auth::check())
+            return redirect()->route('home.index');
+        else
+            return view('Sell.auth.login');
     }
 
 
@@ -52,7 +55,10 @@ class AuthController extends Controller
      */
     public function showRegister()
     {
-        return view('Sell.auth.register');
+        if(Auth::check())
+            return redirect()->route('home.index');
+        else
+            return view('Sell.auth.register');
     }
 
 

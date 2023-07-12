@@ -41,17 +41,10 @@
     <!-- Heading -->
     <div class="sidebar-heading">Quản lý đơn hàng</div>
 
-    <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-credit-card"></i>
-            <span>Thanh toán</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('order.index') }}">
             <i class="fas fa-fw fa-money-bill"></i>
-            <span>Xác nhận chuyển tiền</span></a>
+            <span>Danh sách đơn hàng</span></a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar) -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Sell;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBillRequest;
 use App\Models\Bill;
 use App\Models\BillDetail;
 use App\Models\Book;
@@ -10,6 +11,7 @@ use App\Repositories\BookRepository;
 use App\Repositories\CategoryRepository;
 use App\Services\CartService;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -93,20 +95,20 @@ class HomeController extends Controller
     }
 
 
-    public function payStore(Request $request)
+    public function payStore(StoreBillRequest $request)
     {
         $carts = session('carts');
         $account = (object) session('account');
-        // $bill = new Bill();
-        // $bill->mahoadon = 12;
-        // $bill->makh = $account->makh;
-        // $bill->ngaymua = Carbon::now();
-        // $bill->damua = 1;
-        // $bill->save();
+        $info = $request->validated();
+        $damua = 1;
+        if($request->input('cod'))
+            $damua = 0;
         Bill::insert([
             'makh' => $account->makh,
             'ngaymua' => Carbon::now(),
-            'damua' => 1,
+            'damua' => $damua,
+            'diachi' => $info['diachi'],
+            'sodienthoai' => $info['sodienthoai'],
         ]);
         $mahoadon = Bill::latest()->value('mahoadon');
         foreach ($carts as $product) {

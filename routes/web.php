@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Sell\AuthController;
 use App\Http\Controllers\Sell\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -53,5 +54,8 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/category', CategoryController::class);
     Route::resource('/book', BookController::class);
 
+    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::post('/order/{id}', [OrderController::class, 'confirmPay'])->name('order.confirmPay');
+    Route::get('/order/{id}', [OrderController::class, 'viewDetail'])->name('order.detail');
 
 });

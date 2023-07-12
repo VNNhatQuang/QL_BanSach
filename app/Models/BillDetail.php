@@ -24,4 +24,8 @@ class BillDetail extends Model
     public function hoadon() {
         return $this->belongsTo(Bill::class, 'mahoadon');
     }
+
+    public function sach() {
+        return $this->belongsTo(Book::class, 'masach');
+    }
 }

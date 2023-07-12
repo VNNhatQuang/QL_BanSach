@@ -22,6 +22,8 @@ class Customer extends Model implements Authenticatable
         'password',
     ];
 
+    protected $primaryKey = 'makh';
+
     public $timestamps = false;
 
     protected $hidden = [

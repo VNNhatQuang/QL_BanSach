@@ -18,8 +18,7 @@ class Bill extends Model
     ];
     protected $primaryKey = 'mahoadon';
     const CREATED_AT = 'ngaymua';
-    const UPDATED_AT = false;
-
+    const UPDATED_AT = null;
 
 
     public function khachhang() {

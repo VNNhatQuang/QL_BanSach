@@ -36,6 +36,9 @@
                 @php
                     $carts = session('carts');
                 @endphp
+                @if(session('success'))
+                    <span style="color: green">{{ session('success') }}</span><br><br>
+                @endif
                 @if ($carts != null)
                     <table class="table table-hover">
                         <tr>
@@ -80,10 +83,33 @@
                     <br>
                     <br>
 
-                    <button onclick="window.location.href='/handelCart?deleteAll=true'" class="btn btn-danger">Xóa toàn
-                        bộ giỏ hàng</button>
-                    <button onclick="window.location.href='/pay'" class="btn btn-primary float-right">Thanh
-                        toán</button>
+                    <a href="/handelCart?deleteAll=true" class="btn btn-danger">Xóa toàn bộ giỏ hàng</a>
+                    {{-- <a href="{{ route('pay.index') }}" class="btn btn-primary float-right">Thanh toán</a> --}}
+                    <hr>
+                    <br>
+                    <br>
+                    <h3 align="center">Mua hàng</h3>
+                    <br>
+                    <form action="{{ route('pay.store') }}" method="post" class="form-control">
+                        @csrf
+                        <input type="hidden" name="cod" value="true">
+                        <div class="form-group">
+                            <label class="col">Nhập số điện thoại</label>
+                            <input type="text" name="sodienthoai" class="form-control col">
+                        </div>
+                        @error('sodienthoai')
+                            <span style="color: red">{{ $message }}</span>
+                        @enderror
+                        <div class="form-group">
+                            <label class="col">Nhập địa chỉ giao hàng</label>
+                            <input type="text" name="diachi" class="form-control col">
+                        </div>
+                        @error('diachi')
+                            <span style="color: red">{{ $message }}</span>
+                        @enderror
+                        <button type="submit" class="btn btn-success">Đặt hàng (thanh toán COD)</button>
+                        <a href="{{ route('pay.index') }}" class="btn btn-primary float-right">Chuyển qua thanh toán ngay</a>
+                    </form>
                 @else
                     <b>Giỏ hàng trống! Xin mời <a href="{{ route('home.index') }}">Mua hàng</a></b>
                 @endif

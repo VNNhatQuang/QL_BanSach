@@ -19,7 +19,10 @@ class AuthController extends Controller
      */
     public function showLogin()
     {
-        return view('Admin.auth.login');
+        if(Auth::guard('admin')->check())
+            return redirect()->route('admin.home.index');
+        else
+            return view('Admin.auth.login');
     }
 
 
