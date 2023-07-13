@@ -30,8 +30,8 @@ class UpdateBookRequest extends FormRequest
             'gia' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/|regex:/\S/',
             'maloai' => 'required',
             'sotap' => 'required|integer|regex:/\S/',
-            'anh' => 'required|image',
-            'ngaynhap' => 'required|date',
+            'anh' => 'image',
+            'ngaynhap' => 'date',
             'tacgia' => 'required|string|regex:/\S/',
         ];
     }

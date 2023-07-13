@@ -99,3 +99,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     ```
     php artisan serve
     ```
+
+## Migrations
+    ```
+    Category::factory()->times(10)->create();
+    Book::factory()->times(100)->create();
+    Customer::factory()->times(5)->create();
+    Admin::factory()->times(2)->create();
+    Bill::factory()->times(5)->create();
+    BillDetail::factory()->times(12)->create();
+    ```

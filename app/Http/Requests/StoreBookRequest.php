@@ -31,8 +31,8 @@ class StoreBookRequest extends FormRequest
             'gia' => 'required|integer',
             'maloai' => 'required',
             'sotap' => 'required|integer|regex:/\S/',
-            'anh' => 'required|image',
-            'ngaynhap' => 'required|date',
+            'anh' => 'image',
+            'ngaynhap' => 'date',
             'tacgia' => 'required|string|regex:/\S/',
         ];
     }

@@ -38,7 +38,7 @@
                                 <div class="form-group">
                                     <label class="control-label col">Số lượng:</label>
                                     <div class="col">
-                                        <input type="number" min="1" value="1" name="soluong" class="form-control" value="{{ $book->soluong }}">
+                                        <input type="number" min="1" name="soluong" class="form-control" value="{{ $book->soluong }}">
                                     </div>
                                 </div>
                                 @error('soluong')
@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label class="control-label col">Số tập:</label>
                                     <div class="col">
-                                        <input type="number" min="1" value="1" name="sotap" class="form-control" value="{{ $book->sotap }}">
+                                        <input type="number" min="1" name="sotap" class="form-control" value="{{ $book->sotap }}">
                                     </div>
                                 </div>
                                 @error('sotap')

@@ -17,7 +17,7 @@ class BookFactory extends Factory
     public function definition()
     {
         return [
-            'masach' => fake()->firstName(),
+            'masach' => fake()->unique()->firstName(),
             'tensach' => fake()->lastName(),
             'soluong' => fake()->numberBetween(10),
             'gia' => fake()->numberBetween(10000, 50000),

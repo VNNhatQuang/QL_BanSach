@@ -20,8 +20,8 @@ return new class extends Migration
             $table->bigInteger('gia');
             $table->string('maloai');
             $table->bigInteger('sotap');
-            $table->string('anh');
-            $table->timestamp('ngaynhap');
+            $table->string('anh')->nullable(true);
+            $table->date('ngaynhap')->nullable(true);
             $table->string('tacgia');
             $table->foreign('maloai')->references('maloai')->on('loai');
         });
