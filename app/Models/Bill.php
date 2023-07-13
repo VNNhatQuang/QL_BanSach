@@ -15,6 +15,8 @@ class Bill extends Model
         'makh',
         'ngaymua',
         'damua',
+        'diachi',
+        'sodienthoai',
     ];
     protected $primaryKey = 'mahoadon';
     const CREATED_AT = 'ngaymua';
